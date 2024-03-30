@@ -1,0 +1,33 @@
+***
+ * ****** ** ******** ** *********** **** *** ***** ********
+ *
+ * ****** ******** *******
+ * **** ******
+ **
+
+ class CustomClass {
+  constructor(options) {********
+    this.options = options;
+  }
+  ** **** ******
+  set(type, fn) {
+    ** ** *****
+  }
+}
+
+const test = "abc/*fugafuga*/";
+***
+ * ****** ** ******** ** *********** **** *** ***** ********
+ *
+ * ****** ******** *******
+ * **** ******
+ **
+
+ class CustomClass {
+  constructor(options) {
+    this.options = options;
+  }
+  set(type, fn) {
+    ** ** *****
+  }
+}

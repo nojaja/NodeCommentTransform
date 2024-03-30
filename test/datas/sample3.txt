@@ -1,0 +1,33 @@
+/**
+ * Create an instance of CustomClass with the given options.
+ *
+ * @param {String} options
+ * @api public
+ */
+
+ class CustomClass {
+  constructor(options) {/*test*/
+    this.options = options;
+  }
+  // @api public
+  set(type, fn) {
+    // do stuff
+  }
+}
+
+const test = "abc/*fugafuga*/";
+/**
+ * Create an instance of CustomClass with the given options.
+ *
+ * @param {String} options
+ * @api public
+ */
+
+ class CustomClass {
+  constructor(options) {
+    this.options = options;
+  }
+  set(type, fn) {
+    // do stuff
+  }
+}

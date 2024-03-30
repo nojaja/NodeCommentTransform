@@ -1,0 +1,17 @@
+//1Hello, World! 
+//2Hello, "World"!
+#3Hello, World! 
+4Hello, World! (This) `i's` an `examp'le` of a string.
+"5Hello, World! (This) `i's` an `examp'le` of a string.";
+6Hello, World! This \"is\" an example of a string.//hoge
+7Hello, World! This is an example of a string.#fuga
+8全角テスト //あいうえお
+"9かきくけこ"
+/* 10Hello, World! */
+/* 11Hello, World! 
+ * 12This is an example 
+ * 13of a string.
+ */
+"/* 15Hello, World! */"
+/* 16Hello, World! "*/
+17Hello, World! "This is an //example" of a string.

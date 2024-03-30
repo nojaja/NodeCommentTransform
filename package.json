@@ -1,0 +1,23 @@
+{
+  "name": "nodecommenttransform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/CommentTransform.bundle.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test webpack && jest",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nojaja/NodeCommentTransform.git"
+  },
+  "author": "nojaja <free.riccia@gmail.com> (https://github.com/nojaja)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-jest": "^29.7.0",
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
