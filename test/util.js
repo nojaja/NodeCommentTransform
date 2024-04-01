@@ -4,11 +4,9 @@ const CommentTransform = require('../dist/CommentTransform.bundle.js');
 
 
 const exec = (inputFile, outputFile) => {
-  // const inputFile = './test/datas/sample1.txt'; // 入力ファイルのパス
-  // const outputFile = './test/output/output1.txt'; // 出力ファイルのパス
   
-  const readStream = fs.createReadStream(inputFile)
-  const writeStream = fs.createWriteStream(outputFile)
+  const readStream = fs.createReadStream(inputFile)// 入力ファイルのパス
+  const writeStream = fs.createWriteStream(outputFile)// 出力ファイルのパス
   
   // Transformを使用して実装する
   const transformStream = new CommentTransform(
