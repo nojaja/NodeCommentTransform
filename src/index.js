@@ -7,12 +7,13 @@ sourceMapSupport.install();
 export class CommentTransform extends Transform {
   constructor(commentProc,stringProc) {
     super();
-    this.currentQuoteEndSymbol;
-    this.currentCommentEndSymbol;
+    this.currentQuoteSymbol;
+    this.currentCommentSymbol;
 
     this.state = {
       isComment: false,
-      isString: false
+      isString: false,
+      count: 0
     }
 
     this.previousChar = " ";
@@ -26,7 +27,10 @@ export class CommentTransform extends Transform {
     this.QuoteSymbols = [
       { startSymbol: "'", endSymbol: "'", includeLastChar: true },
       { startSymbol: '"', endSymbol: '"', includeLastChar: true },
-      { startSymbol: '`', endSymbol: '`', includeLastChar: true }
+      { startSymbol: '`', endSymbol: '`', includeLastChar: true },
+      { startSymbol: '(/', endSymbol: '/', includeLastChar: true }, //.replace(/''/g, "'");
+      //ex. Lexer.NA = /NOT_APPLICABLE/;
+      //ex. "\\"
     ];
     this.commentProc=commentProc;
     this.stringProc=stringProc;
@@ -35,7 +39,7 @@ export class CommentTransform extends Transform {
   isStatementStart(state, string, Symbols) {
     if (string[0] == '\\') return null; // isEscape
     for (const iterator of Symbols) {
-      if (string.startsWith(iterator.startSymbol, 1)) return iterator.endSymbol;
+      if (string.startsWith(iterator.startSymbol, 1)) return iterator;
     }
     return null
   }
@@ -47,10 +51,11 @@ export class CommentTransform extends Transform {
     return this.isStatementStart(state, string, this.QuoteSymbols)
   }
 
-  isStatementEnd(state, string, endSymbol) {
+  isStatementEnd(state, string, symbol) {
     if (string[0] == '\\') return false; // isEscape
     const offset = 2;
-    if (string.endsWith(endSymbol,offset)) return true;
+    //console.log("isStatementEnd:",string,this.state.count , symbol.startSymbol.length)
+    if (this.state.count >= symbol.startSymbol.length && string.endsWith(symbol.endSymbol,offset)) return true;
     return false
   }
 
@@ -65,6 +70,7 @@ export class CommentTransform extends Transform {
     let buf=[]
     for (let i = 0; i < text.length; i++) {
       const char = text[i];
+      this.state.count++
       const nextChar = (i + 1 < text.length) ? text[i + 1] : '';
       const str = this.previousChar + char + nextChar;
 
@@ -76,40 +82,44 @@ export class CommentTransform extends Transform {
           //proc({ isComment: true, isString: false, text: char });
           buf.push({ isComment: true, isString: false, text: char });
           this.state.isComment = true;
-          this.currentCommentEndSymbol = isComment;
+          this.state.count = 0;
+          this.currentCommentSymbol = isComment;
         } else if (isQuote) {//文字列開始
           //output.push({ isComment: false, isString: true, text: char });
           //proc({ isComment: false, isString: true, text: char });
           buf.push({ isComment: false, isString: true, text: char });
           this.state.isString = true;
-          this.currentQuoteEndSymbol = isQuote;
+          this.state.count = 0;
+          this.currentQuoteSymbol = isQuote;
         }else{//それ以外
           //output.push({ isComment: false, isString: false, text: char });
           //proc({ isComment: false, isString: false, text: char });
           buf.push({ isComment: false, isString: false, text: char });
         }
       } else if (this.state.isComment) { //コメント内
-        if (this.isStatementEnd({}, str, this.currentCommentEndSymbol)) {//コメント終わり
+        if (this.isStatementEnd({}, str, this.currentCommentSymbol)) {//コメント終わり
           //proc({ isComment: true, isString: false, text: char });
           buf.push({ isComment: true, isString: false, text: char });
           proc(buf)
           buf = []
-          this.currentCommentEndSymbol = undefined;
+          this.currentCommentSymbol = undefined;
           this.state.isComment = false;
+          this.state.count = 0;
         } else {//コメント内
           //output.push({ isComment: true, isString: false, text: char });
           //proc({ isComment: true, isString: false, text: char });
           buf.push({ isComment: true, isString: false, text: char });
         }
       } else if (this.state.isString) { //文字列内
-        if (this.isStatementEnd({}, str, this.currentQuoteEndSymbol)) { //文字列終わり
+        if (this.isStatementEnd({}, str, this.currentQuoteSymbol)) { //文字列終わり
           //output.push({ isComment: false, isString: true, text: char });
           //proc({ isComment: false, isString: true, text: char });
           buf.push({ isComment: false, isString: true, text: char });
           proc(buf)
           buf = []
-          this.currentQuoteEndSymbol = undefined;
+          this.currentQuoteSymbol = undefined;
           this.state.isString = false;
+          this.state.count = 0;
         } else {//文字列内
           //output.push({ isComment: false, isString: true, text: char });
           //proc({ isComment: false, isString: true, text: char });

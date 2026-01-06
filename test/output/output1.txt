@@ -1,17 +1,17 @@
 ********* ****** 
 ********* ********
 ******** ****** 
-4Hello, World! (This) `i's` an `examp'le` of a string.
-"5Hello, World! (This) `i's` an `examp'le` of a string.";
+4Hello, World! (This) ##### an ########## of a string.
+######## ###### ###### ##### ## ########## ## # ########;
 6Hello, World! This \"is\" an example of a string.******
 7Hello, World! This is an example of a string.*****
 8全角テスト **□□□□□
-"9かきくけこ"
+##〇〇〇〇〇#
 ** ******** ****** **
 ** ******** ****** 
  * ****** ** ** ******* 
  * **** * *******
  **
-"/* 15Hello, World! */"
+### ######## ###### ###
 ** ******** ****** ***
-17Hello, World! "This is an //example" of a string.
+17Hello, World! ##### ## ## ########## of a string.

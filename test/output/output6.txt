@@ -457,7 +457,7 @@ BigDecimal.prototype.createArrayWithZeros = createArrayWithZeros;
   **
  ********** ****** ***** *************************** ******** ************************************* ** *** **** ** ** **** *** *** ***********
  ** ** ** ** **** ** *** ***** *** *****
-BigDecimal.ZERO = BigDecimal.prototype.ZERO = new BigDecimal("0");
+BigDecimal.ZERO = BigDecimal.prototype.ZERO = new BigDecimal(###);
 
  ***
   * *** *********************** ******** ****
@@ -468,7 +468,7 @@ BigDecimal.ZERO = BigDecimal.prototype.ZERO = new BigDecimal("0");
   **
  ********** ****** ***** *************************** ******* ************************************* ** *** **** ** ** **** *** *** ***********
  ** ** ** ** **** ** *** ***** *** *****
-BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
+BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal(###);
 
  ***
   * *** *********************** ******** *****
@@ -478,7 +478,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
   * ******* *** ***
   **
  ********** ****** ***** *************************** ******* ********************************
- BigDecimal.TEN = BigDecimal.prototype.TEN = new BigDecimal("10");
+ BigDecimal.TEN = BigDecimal.prototype.TEN = new BigDecimal(####);
 
  ** ***** ******** ********** **** ******* *** ********** ***** **
  ** ********** ******* **
@@ -704,9 +704,9 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
     offset = BigDecimal.arguments[1];
     length = BigDecimal.arguments[2];
    }
-  if (typeof inchars == "string")
+  if (typeof inchars == ########)
    {
-    inchars = inchars.split("");
+    inchars = inchars.split(##);
    }
 
   *********** *******
@@ -744,25 +744,25 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
   ** *********** ******** ***** *** ******* *** ****
   ** *********** ** ******** ******* ***** ****** *** ******
   if (length<=0)
-   this.bad("BigDecimal(): ", inchars); ** *** ********** ****** *******
+   this.bad(############## #, inchars); ** *** ********** ****** *******
   ** **** ****** **** ***** ***** ****** **********
 
   ** ****** *** **** **** **** **
   this.ind=this.ispos; ** ****** ********
-  if (inchars[0]==('-'))
+  if (inchars[0]==(###))
    {
     length--;
     if (length==0)
-     this.bad("BigDecimal(): ", inchars); ** ******* ***** ****
+     this.bad(############## #, inchars); ** ******* ***** ****
     this.ind=this.isneg;
     offset++;
    }
   else
-   if (inchars[0]==('+'))
+   if (inchars[0]==(###))
     {
      length--;
      if (length==0)
-      this.bad("BigDecimal(): ", inchars); ** ******* ***** ****
+      this.bad(############## #, inchars); ** ******* ***** ****
      offset++;
     }
 
@@ -774,25 +774,25 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
   last=-1; ** **** ********* ** ********
   {var $1=length;i=offset;i:for(;$1>0;$1--,i++){
    si=inchars[i];
-   if (si>='0')  ** **** *** ****** *****
-    if (si<='9')
+   if (si>=###)  ** **** *** ****** *****
+    if (si<=###)
      {
       last=i;
       d++; ** ***** ** ********
       continue i;
      }
-   if (si=='.')
+   if (si==###)
     { ** ****** *** ******
      if (dotoff>=0)
-      this.bad("BigDecimal(): ", inchars); ** *** ****
+      this.bad(############## #, inchars); ** *** ****
      dotoff=i-offset; ** ****** **** ********
      continue i;
     }
-   if (si!='e')
-    if (si!='E')
+   if (si!=###)
+    if (si!=###)
      { ** ****** ** ***** *****
-      if (si<'0' || si>'9')
-       this.bad("BigDecimal(): ", inchars); ** *** * ******
+      if (si<### || si>###)
+       this.bad(############## #, inchars); ** *** * ******
       ** ***** *** **** ** ***** ***** ***** ** ***** ***** ****** ****
       exotic=true; ** **** **** ********** *****
       last=i;
@@ -802,37 +802,37 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    ** ***** *** ** *** ** *** ******* ******** ******** **
    ** *********** **** ** ****** ********
    if ((i-offset)>(length-2))
-    this.bad("BigDecimal(): ", inchars); ** ** **** *** **** *** *****
+    this.bad(############## #, inchars); ** ** **** *** **** *** *****
    eneg=false;
-   if ((inchars[i+1])==('-'))
+   if ((inchars[i+1])==(###))
     {
      eneg=true;
      k=i+2;
     }
    else
-    if ((inchars[i+1])==('+'))
+    if ((inchars[i+1])==(###))
      k=i+2;
     else
      k=i+1;
    ** * ** ****** ** ***** ******** *****
    elen=length-((k-offset)); ** ******** ****** ** ******
    if ((elen==0)||(elen>9))
-    this.bad("BigDecimal(): ", inchars); ** * ** **** **** * ******
+    this.bad(############## #, inchars); ** * ** **** **** * ******
    {var $2=elen;j=k;j:for(;$2>0;$2--,j++){
     sj=inchars[j];
-    if (sj<'0')
-     this.bad("BigDecimal(): ", inchars); ** ****** ***
-    if (sj>'9')
+    if (sj<###)
+     this.bad(############## #, inchars); ** ****** ***
+    if (sj>###)
      { ** ***** ** ****** *****
       **** ******* ** *******
        ****************** ** *** * ******
       **************************************** ** ***** ****
       ** **********
        ************* ** *** **** ****
-      this.bad("BigDecimal(): ", inchars);
+      this.bad(############## #, inchars);
      }
     else
-     dvalue=sj-'0';
+     dvalue=sj-###;
     this.exp=(this.exp*10)+dvalue;
     }
    }*****
@@ -845,27 +845,27 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
 
   ** **** **** *** ********* **
   if (d==0)
-   this.bad("BigDecimal(): ", inchars); ** ** ******** ******
+   this.bad(############## #, inchars); ** ** ******** ******
   if (dotoff>=0)
    this.exp=(this.exp+dotoff)-d; ** ****** ******** ** *** ***
 
   ** ***** ******* ********* ****** ***** ** *** **** **
   {var $3=last-1;i=offset;i:for(;i<=$3;i++){
    si=inchars[i];
-   if (si=='0')
+   if (si==###)
     {
      offset++;
      dotoff--;
      d--;
     }
    else
-    if (si=='.')
+    if (si==###)
      {
       offset++; ** **** **** ***
       dotoff--;
      }
     else
-     if (si<='9')
+     if (si<=###)
       break i;** ***** **
      else
       {** ****** **
@@ -888,13 +888,13 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
      if (i==dotoff)
       j++; ** ** ***
      sj=inchars[j];
-     if (sj<='9')
-      this.mant[i]=sj-'0';** **** **
+     if (sj<=###)
+      this.mant[i]=sj-###;** **** **
      else
       {
        ******************************************
        **** **********
-        this.bad("BigDecimal(): ", inchars); ** *** * ****** ***** ***
+        this.bad(############## #, inchars); ** *** * ****** ***** ***
        ***********************
       }
      j++;
@@ -906,7 +906,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
     {var $5=d;i=0;i:for(;$5>0;$5--,i++){
      if (i==dotoff)
       j++;
-     this.mant[i]=inchars[j]-'0';
+     this.mant[i]=inchars[j]-###;
      j++;
      }
     }*****
@@ -940,7 +940,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
       ** ********** ***** *** ********
       mag=(this.exp+this.mant.length)-1; ** **** ******** ** ********** ********
       if ((mag<this.MinExp)||(mag>this.MaxExp))
-       this.bad("BigDecimal(): ", inchars);
+       this.bad(############## #, inchars);
      }
    }
   ** *** ********* ******* ******* *** *** ****** ******* *********** *** *** ****
@@ -1238,7 +1238,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "abs(): " + abs.arguments.length + " arguments given; expected 0 or 1";
+    throw ####### # + abs.arguments.length + # ######### ###### ######## # ## ##;
    }
   if (this.ind==this.isneg)
    return this.negate(set);
@@ -1296,7 +1296,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "add(): " + add.arguments.length + " arguments given; expected 1 or 2";
+    throw ####### # + add.arguments.length + # ######### ###### ######## # ## ##;
    }
   var rhs = add.arguments[0];
   ******************************* ****
@@ -1598,7 +1598,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "compareTo(): " + compareTo.arguments.length + " arguments given; expected 1 or 2";
+    throw ############# # + compareTo.arguments.length + # ######### ###### ######## # ## ##;
    }
   var rhs = compareTo.arguments[0];
   ******* *************
@@ -1774,7 +1774,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
   var scale = -1;
   if (divide.arguments.length == 2)
    {
-    if (typeof divide.arguments[1] == 'number')
+    if (typeof divide.arguments[1] == ########)
      {
       set=new MathContext(0,MathContext.prototype.PLAIN,false,divide.arguments[1]); ** ******* ****** ****
      }
@@ -1787,7 +1787,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    {
     scale = divide.arguments[1];
     if (scale<0)
-     throw "divide(): Negative scale: "+scale;
+     throw ########## ######## ###### #+scale;
     set=new MathContext(0,MathContext.prototype.PLAIN,false,divide.arguments[2]); ** ******* ******
    }
   else if (divide.arguments.length == 1)
@@ -1796,10 +1796,10 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "divide(): " + divide.arguments.length + " arguments given; expected between 1 and 3";
+    throw ########## # + divide.arguments.length + # ######### ###### ######## ####### # ### ##;
    }
   var rhs = divide.arguments[0];
-  return this.dodivide('D',rhs,set,scale);
+  return this.dodivide(###,rhs,set,scale);
   }
 
  ***
@@ -1856,11 +1856,11 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "divideInteger(): " + divideInteger.arguments.length + " arguments given; expected 1 or 2";
+    throw ################# # + divideInteger.arguments.length + # ######### ###### ######## # ## ##;
    }
   var rhs = divideInteger.arguments[0];
   ** ***** * ** **** **** **** *****
-  return this.dodivide('I',rhs,set,0);
+  return this.dodivide(###,rhs,set,0);
   }
 
  ***
@@ -1918,7 +1918,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "max(): " + max.arguments.length + " arguments given; expected 1 or 2";
+    throw ####### # + max.arguments.length + # ######### ###### ######## # ## ##;
    }
   var rhs = max.arguments[0];
   if ((this.compareTo(rhs,set))>=0)
@@ -1982,7 +1982,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "min(): " + min.arguments.length + " arguments given; expected 1 or 2";
+    throw ####### # + min.arguments.length + # ######### ###### ######## # ## ##;
    }
   var rhs = min.arguments[0];
   if ((this.compareTo(rhs,set))<=0)
@@ -2043,7 +2043,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "multiply(): " + multiply.arguments.length + " arguments given; expected 1 or 2";
+    throw ############ # + multiply.arguments.length + # ######### ###### ######## # ## ##;
    }
   var rhs = multiply.arguments[0];
   ******************************* ****
@@ -2194,7 +2194,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "negate(): " + negate.arguments.length + " arguments given; expected 0 or 1";
+    throw ########## # + negate.arguments.length + # ######### ###### ######## # ## ##;
    }
   ******************************* ****
   var res;
@@ -2259,7 +2259,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "plus(): " + plus.arguments.length + " arguments given; expected 0 or 1";
+    throw ######## # + plus.arguments.length + # ######### ###### ######## # ## ##;
    }
   ** **** ****** *** ****** *** ****** ** *** *** ********
   ** *** ****** **** ******
@@ -2350,7 +2350,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "pow(): " + pow.arguments.length + " arguments given; expected 1 or 2";
+    throw ####### # + pow.arguments.length + # ######### ###### ######## # ## ##;
    }
   var rhs = pow.arguments[0];
   ******* **
@@ -2381,14 +2381,14 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    {
     if (rhs.ind==this.isneg)
      ********* *** *************************************** ********* ******************
-     throw "pow(): Negative power: " + rhs.toString();
+     throw ####### ######## ###### # + rhs.toString();
     workdigits=0;
    }
   else
    {** ***** ****** **
     if ((rhs.mant.length+rhs.exp)>reqdig)
      ********* *** ********************************** **** ********** ******************
-     throw "pow(): Too many digits: " + rhs.toString();
+     throw ####### ### #### ####### # + rhs.toString();
 
     ** ***** *** *** ** ****** ** **** ** **
     if (lhs.mant.length>reqdig)
@@ -2488,10 +2488,10 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "remainder(): " + remainder.arguments.length + " arguments given; expected 1 or 2";
+    throw ############# # + remainder.arguments.length + # ######### ###### ######## # ## ##;
    }
   var rhs = remainder.arguments[0];
-  return this.dodivide('R',rhs,set,-1);
+  return this.dodivide(###,rhs,set,-1);
   }
 
  ***
@@ -2545,7 +2545,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "subtract(): " + subtract.arguments.length + " arguments given; expected 1 or 2";
+    throw ############ # + subtract.arguments.length + # ######### ###### ######## # ## ##;
    }
   var rhs = subtract.arguments[0];
   ******************************* *******
@@ -2923,7 +2923,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "format(): " + format.arguments.length + " arguments given; expected 2 or 6";
+    throw ########## # + format.arguments.length + # ######### ###### ######## # ## ##;
    }
   var before = format.arguments[0];
   var after = format.arguments[1];
@@ -2957,13 +2957,13 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
 
   ** ***** ********* **
   if ((before<(-1))||(before==0))
-   this.badarg("format",1,before);
+   this.badarg(########,1,before);
   if (after<(-1))
-   this.badarg("format",2,after);
+   this.badarg(########,2,after);
   if ((explaces<(-1))||(explaces==0))
-   this.badarg("format",3,explaces);
+   this.badarg(########,3,explaces);
   if (exdigits<(-1))
-   this.badarg("format",4,exdigits);
+   this.badarg(########,4,exdigits);
   {**********
   if (exformint==MathContext.prototype.SCIENTIFIC)
    {}
@@ -2973,7 +2973,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    exformint=MathContext.prototype.SCIENTIFIC;
    ** **** ***** ***** *******
   else{
-   this.badarg("format",5,exformint);
+   this.badarg(########,5,exformint);
   }
   }
   ** ******** *** ******** **** ** **** ** ****** ** ********* *
@@ -2986,7 +2986,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
      new MathContext(9,MathContext.prototype.SCIENTIFIC,false,exround);
    }
    catch ($10){
-    this.badarg("format",6,exround);
+    this.badarg(########,6,exround);
    }}
 
   num=this.clone(this); ** **** ******* ****
@@ -3053,7 +3053,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
       num.mant=newmant;
       num.exp=num.exp-((after-thisafter)); ** ****** ********
       if (num.exp<this.MinExp)
-       throw "format(): Exponent Overflow: " + num.exp;
+       throw ########## ######## ######### # + num.exp;
       break setafter;
      }
     ** ** **** *** **** ****** ***** *** ******* ****** **** *****
@@ -3089,21 +3089,21 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    {
     ** **** *** *** ** ***
     {var $11=a.length;p=0;p:for(;$11>0;$11--,p++){
-     if (a[p]=='.')
+     if (a[p]==###)
       break p;
-     if (a[p]=='E')
+     if (a[p]==###)
       break p;
      }
     }*****
     ** * ** *** ****** ** **** **** ** ********* ***** *** ** *****
     ** **** *** *** ******* ****** ** ****** ****
     if (p>before)
-     this.badarg("format",1,before); ** ***** ***
+     this.badarg(########,1,before); ** ***** ***
     if (p<before)
      { ** **** ******* ******
       newa=new Array((a.length+before)-p);
       {var $12=before-p;i=0;i:for(;$12>0;$12--,i++){
-       newa[i]=' ';
+       newa[i]=# #;
        }
       }*****
       ****************************************************************************************
@@ -3117,7 +3117,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    {
     ** **** *** *** ******* ** ** ****** **
     {var $13=a.length-1;p=a.length-1;p:for(;$13>0;$13--,p--){
-     if (a[p]=='E')
+     if (a[p]==###)
       break p;
      }
     }*****
@@ -3128,7 +3128,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
       ****************************************************************************************
       this.arraycopy(a,0,newa,0,a.length);
       {var $14=explaces+2;i=a.length;i:for(;$14>0;$14--,i++){
-       newa[i]=' ';
+       newa[i]=# #;
        }
       }*****
       a=newa;
@@ -3137,14 +3137,14 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
      {** ***** * ** ** *** **** ** ****** *****
       places=(a.length-p)-2; ** ****** ** ***
       if (places>explaces)
-       this.badarg("format",3,explaces);
+       this.badarg(########,3,explaces);
       if (places<explaces)
        { ** **** ** ****** *****
         newa=new Array((a.length+explaces)-places);
         *********************************************************************************** ** ******* * *** ****
         this.arraycopy(a,0,newa,0,p+2);
         {var $15=explaces-places;i=p+2;i:for(;$15>0;$15--,i++){
-         newa[i]='0';
+         newa[i]=###;
          }
         }*****
         **************************************************************************************** ** ********* ** ********
@@ -3154,7 +3154,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
      ** *** *************** **** **** **** *** ***** *******
      }
    }
-  return a.join("");
+  return a.join(##);
   }
 
  ***
@@ -3233,7 +3233,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
     lodigit=lodigit+this.exp; ** ******* ** *******
     ** *** ******* ****** **** ** * **
     if ((!(this.allzero(this.mant,lodigit+1))))
-     throw "intValueExact(): Decimal part non-zero: " + this.toString();
+     throw ################# ####### #### ######### # + this.toString();
     if (lodigit<0)
      return 0; ** *********
     useexp=0;
@@ -3241,7 +3241,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
   else
    {** *** **
     if ((this.exp+lodigit)>9)  ** ***** ****
-     throw "intValueExact(): Conversion overflow: "+this.toString();
+     throw ################# ########## ######### #+this.toString();
     useexp=this.exp;
    }
   ** ******* *** ******** ** ******* ****** *** ***** **
@@ -3266,7 +3266,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
        if (this.ind==this.isneg)  ** ****** *** ********
         if (this.mant[0]==2)
          return result; ** ****** *** *** ***** *
-      throw "intValueExact(): Conversion overflow: "+this.toString();
+      throw ################# ########## ######### #+this.toString();
      }
    }
 
@@ -3532,7 +3532,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "setScale(): " + setScale.arguments.length + " given; expected 1 or 2";
+    throw ############ # + setScale.arguments.length + # ###### ######## # ## ##;
    }
   var scale = setScale.arguments[0];
   ******* *********
@@ -3564,7 +3564,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    {** *************** *********** ******** **
     if (scale<0)
      ********* *** *************************************** ********* *********
-     throw "setScale(): Negative scale: " + scale;
+     throw ############ ######## ###### # + scale;
     ** ******** **** ***** ********* ** ******* ******
     newlen=res.mant.length-((ourscale-scale)); ** **** ** ***
     res=res.round(newlen,round); ** ***** ** ******** ******
@@ -3750,7 +3750,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
 
  ********** **************** ***********
  function toString() {
-  return this.layout().join("");
+  return this.layout().join(##);
   }
 
  ***
@@ -3905,16 +3905,16 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
   var len=0;
   cmant=new Array(this.mant.length); ** **** ****** ** * ******
   {var $18=this.mant.length;i=0;i:for(;$18>0;$18--,i++){
-   cmant[i]=this.mant[i]+'';
+   cmant[i]=this.mant[i]+##;
    }
   }*****
 
   if (this.form!=MathContext.prototype.PLAIN)
    {** *********** ******** ****** **
     ********** **************************************** ** *****************
-    sb="";
+    sb=##;
     if (this.ind==this.isneg)
-     sb += '-';
+     sb += ###;
     euse=(this.exp+cmant.length)-1; ** ******** ** ***
     ** ***** *************** ****** *** **** ** ****** **
     if (this.form==MathContext.prototype.SCIENTIFIC)
@@ -3922,8 +3922,8 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
       sb += cmant[0]; ** *********** *********
       if (cmant.length>1)  ** **** ******* ****
        **************************************************
-       sb += '.';
-       sb += cmant.slice(1).join("");
+       sb += ###;
+       sb += cmant.slice(1).join(##);
      }
     else
      {engineering:do{
@@ -3935,38 +3935,38 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
       if (sig>=cmant.length)
        { ** **** ******* *** ** ******
         ************************************
-        sb += cmant.join("");
+        sb += cmant.join(##);
         {var $19=sig-cmant.length;for(;$19>0;$19--){
-         sb += '0';
+         sb += ###;
          }
         }
        }
       else
        { ** ******* ***** ******
         **************************************************************************
-        sb += cmant.slice(0,sig).join("");
-        sb += '.';
-        sb += cmant.slice(sig).join("");
+        sb += cmant.slice(0,sig).join(##);
+        sb += ###;
+        sb += cmant.slice(sig).join(##);
        }
      }while(false);}***************
     if (euse!=0)
      {
       if (euse<0)
        {
-        csign='-';
+        csign=###;
         euse=-euse;
        }
       else
-       csign='+';
+       csign=###;
       **********************************************
-      sb += 'E';
+      sb += ###;
       sb += csign;
       sb += euse;
      }
     *********** *****************
     ************************ *********************
     ********** ****
-    return sb.split("");
+    return sb.split(##);
    }
 
   ** **** *** *************** ******* ******** **
@@ -3975,7 +3975,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
     if (this.ind>=0)
      return cmant; ** ************ *******
     rec=new Array(cmant.length+1);
-    rec[0]='-';
+    rec[0]=###;
     ***********************************************************************************************
     this.arraycopy(cmant,0,rec,1,cmant.length);
     return rec;
@@ -3993,11 +3993,11 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
     len=(needsign+2)-this.exp; ** ******************************
     rec=new Array(len);
     if (needsign!=0)
-     rec[0]='-';
-    rec[needsign]='0';
-    rec[needsign+1]='.';
+     rec[0]=###;
+    rec[needsign]=###;
+    rec[needsign+1]=###;
     {var $20=-mag;i=needsign+2;i:for(;$20>0;$20--,i++){ ** ***** ****
-     rec[i]='0';
+     rec[i]=###;
      }
     }*****
     **************************************************************************************************************
@@ -4010,11 +4010,11 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
     len=needsign+mag;
     rec=new Array(len);
     if (needsign!=0)
-     rec[0]='-';
+     rec[0]=###;
     ******************************************************************************************************
     this.arraycopy(cmant,0,rec,needsign,cmant.length);
     {var $21=mag-cmant.length;i=needsign+cmant.length;i:for(;$21>0;$21--,i++){ ** ***** *
-     rec[i]='0';
+     rec[i]=###;
      }
     }*****
     return rec;
@@ -4024,10 +4024,10 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
   len=(needsign+1)+cmant.length;
   rec=new Array(len);
   if (needsign!=0)
-   rec[0]='-';
+   rec[0]=###;
   *********************************************************************************************
   this.arraycopy(cmant,0,rec,needsign,mag);
-  rec[needsign+mag]='.';
+  rec[needsign+mag]=###;
   ********************************************************************************************************************
   this.arraycopy(cmant,mag,rec,(needsign+mag)+1,cmant.length-mag);
   return rec;
@@ -4045,7 +4045,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
   i=this.intValueExact(); ** ******* *** ***** ******* *****
   ** *** **** ******* ** ****** ************* ****** *** ** ****
   if ((i<min)||(i>max))
-   throw "intcheck(): Conversion overflow: "+i;
+   throw ############ ########## ######### #+i;
   return i;
   }
 
@@ -4153,7 +4153,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
 
   ** ***** ** **** **** ******* ********** ****** *** ********* *******
   if (rhs.ind==0)
-   throw "dodivide(): Divide by 0"; ** ******** ***
+   throw ############ ###### ## ##; ** ******** ***
   if (lhs.ind==0)
    { ** *** ** * ********* **** ****
     if (set.form!=MathContext.prototype.PLAIN)
@@ -4192,9 +4192,9 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
   newexp=((lhs.exp-rhs.exp)+lhs.mant.length)-rhs.mant.length;
   ** ** *** ******** **** **** **** ***** ***** *** ******** **
   if (newexp<0)
-   if (code!='D')
+   if (code!=###)
     {
-     if (code=='I')
+     if (code==###)
       return this.ZERO; ** **** * ** ******* ****
      ** **** ** **** ********* ** ********* ***** *** ***** ***** **
      return this.clone(lhs).finish(set,false);
@@ -4305,7 +4305,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
     if ((-res.exp)>scale)
      break outer;
    ** *** ***** *** ** *** ****** *** ** ******* **** ****  **
-   if (code!='D')
+   if (code!=###)
     if (res.exp<=0)
      break outer;
    res.exp=res.exp-1; ** ****** *** ********
@@ -4320,12 +4320,12 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
   if (have==0)
    have=1; ** *********** ** ** ** ****** **** * *****
 
-  if ((code=='I')||(code=='R'))
+  if ((code==###)||(code==###))
    {** ***** *** ******* ******** ****** **
     if ((have+res.exp)>reqdig)
-     throw "dodivide(): Integer overflow";
+     throw ############ ####### #########;
 
-    if (code=='R')
+    if (code==###)
      {remainder:do{
       ** ** **** ***** ********* ** ****** *** ******* **
       if (res.mant[0]==0)  ** ** ******* **** *** *****
@@ -4420,7 +4420,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
 
  *********** **** ******** *****
  function bad(prefix, s) {
-  throw prefix + "Not a number: "+s;
+  throw prefix + #### # ####### #+s;
   }
 
  ** ****** ****** * *** ******** ** * ******* *******
@@ -4430,7 +4430,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
 
  *********** **** *********************** ******** ******************** *******
  function badarg(name, pos, value) {
-  throw "Bad argument "+pos+" to "+name+": "+value;
+  throw #### ######## #+pos+# ## #+name+## #+value;
   }
 
  ** ****** ****** **** ***** ** ***** ******* ******* **** ***  ** **
@@ -4662,12 +4662,12 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
   ** ***** ***** ******
   if (this.mant.length>dig)
    if ((!(this.allzero(this.mant,dig))))
-    throw "Too many digits: "+this.toString();
+    throw #### #### ####### #+this.toString();
   if (rhs==null)
    return; ** *******
   if (rhs.mant.length>dig)
    if ((!(this.allzero(rhs.mant,dig))))
-    throw "Too many digits: "+rhs.toString();
+    throw #### #### ####### #+rhs.toString();
   return;
   }
 
@@ -4709,7 +4709,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }
   else
    {
-    throw "round(): " + round.arguments.length + " arguments given; expected 1 or 2";
+    throw ######### # + round.arguments.length + # ######### ###### ######## # ## ##;
    }
   ***** *******
   var adjust;
@@ -4764,7 +4764,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    { ** ******* *** **********
     ** ********** *** ******** ****** ** ** *****
     if ((!(this.allzero(oldmant,len))))
-     throw "round(): Rounding necessary";
+     throw ######### ######## ##########;
    }
   else if (mode==this.ROUND_HALF_DOWN)
    { ** ****** **** ****
@@ -4809,7 +4809,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
       increment=sign;
    }
   else{
-   throw "round(): Bad round value: "+mode;
+   throw ######### ### ##### ###### #+mode;
   }
   }while(false);}*********
 
@@ -4841,7 +4841,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
    }while(false);}********
   ** ******** *** ******** ******** *************
   if (this.exp>this.MaxExp)
-   throw "round(): Exponent Overflow: "+this.exp;
+   throw ######### ######## ######### #+this.exp;
   return this;
   }
 
@@ -4969,7 +4969,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
           if (mag<=this.MaxExp)
            break overflow;
         }
-       throw "finish(): Exponent Overflow: "+mag;
+       throw ########## ######## ######### #+mag;
       }while(false);}************
      return this;
     }
@@ -4986,7 +4986,7 @@ BigDecimal.ONE = BigDecimal.prototype.ONE = new BigDecimal("1");
   else{
    ** * ***** ****** **** *** ********* ******** *** ***** ********
    if (this.exp<this.MinExp)
-    throw "finish(): Exponent Overflow: "+this.exp;
+    throw ########## ######## ######### #+this.exp;
   }
   }
   this.mant=this.ZERO.mant; ** ********* ********

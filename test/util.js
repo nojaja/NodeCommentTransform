@@ -11,8 +11,10 @@ const exec = (inputFile, outputFile) => {
   // Transformを使用して実装する
   const transformStream = new CommentTransform(
     (text)=>(text.match(/[^\x01-\x7E\uFF61-\uFF9F]/)) ? '□' : ((text.match(/\S/)) ? '*' : text),
-    (text)=>text
+    //(text)=>text
+    (text)=>(text.match(/[^\x01-\x7E\uFF61-\uFF9F]/)) ? '〇' : ((text.match(/\S/)) ? '#' : text),
   );
+
   const sysout = new Transform({
     transform(chunk,encoding,done) {
       this.push(chunk) // データを下流のパイプに渡す処理

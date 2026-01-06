@@ -20,6 +20,8 @@ const main = () => {
 
     })
     try {
+        //util.exec('./test/datas/sample8.txt', './test/output/output8.txt')
+
         util.exec('./test/datas/sample1.txt', './test/output/output1.txt')
         util.exec('./test/datas/sample2.txt', './test/output/output2.txt')
         util.exec('./test/datas/sample3.txt', './test/output/output3.txt')
@@ -27,6 +29,10 @@ const main = () => {
         util.exec('./test/datas/sample5.txt', './test/output/output5.txt')
         util.exec('./test/datas/sample6.txt', './test/output/output6.txt')
         util.exec('./test/datas/sample7.txt', './test/output/output7.txt')
+        util.exec('./test/datas/sample8.txt', './test/output/output8.txt')
+
+        util.exec('./test/datas/handsontable.full.js', './test/output/handsontable.full.js')
+        
     } catch (error) {
         
     }
